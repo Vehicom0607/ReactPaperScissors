@@ -1,10 +1,16 @@
 import './App.css';
-import TopNavbar from './Components/UI/Navbar'
+import 'bootstrap/dist/css/bootstrap-grid.min.css'
+import MainNavbar from './Components/UI/Navbar'
+import {Container} from "react-bootstrap";
+import Controller from "./Containers/Controller";
 
 function App() {
   return (
-    <div className="App">
-      <TopNavbar />
+    <div className="App" >
+      <MainNavbar />
+      <Container>
+        <Controller />
+      </Container>
     </div>
   );
 }
