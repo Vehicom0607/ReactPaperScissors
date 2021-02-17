@@ -14,6 +14,7 @@ class Controller extends Component {
 
     playerChooseHandler = playerChoice => {
         let computerChoice = Math.floor(Math.random() * 3)
+        console.log(computerChoice)
         if (computerChoice === 0) {
             this.increaseScore('tie')
             computerChoice = playerChoice
@@ -53,7 +54,7 @@ class Controller extends Component {
     render() {
         return (
             <div className='py-5'>
-                <ResultDisplay playerScore={this.state.playerScore} computerScore={this.state.computerScore} playerChoice={this.state.playerChoice} computerChoice={this.state.computerChoice} playerWon={this.state.result} />
+                <ResultDisplay playerScore={this.state.playerScore} computerScore={this.state.computerScore} playerChoice={this.state.playerChoice} computerChoice={this.state.computerChoice} result={this.state.result} />
                 <PlayerControl playerChooseHandler={this.playerChooseHandler} />
             </div>
         );

@@ -14,10 +14,10 @@ const ResultDisplay = props => {
     let result = <div className='text-center display-3'>{`${playerChoice} Beats ${computerChoice}. You Win!`}</div>
     if (props.result === 'computer') {
         result = <div className='text-center display-3'>{`${computerChoice} Beats ${playerChoice}. You Lose!`}</div>
-    } else if (props.playerWon === 'tie') {
+    } else if (props.result === 'tie') {
         result = <div className='text-center display-3'>{`${computerChoice} Ties ${playerChoice}. You Tie!`}</div>
     }
-    else if (props.playerWon === null) {
+    else if (props.result === null) {
         result = <div className='text-center display-3'>Choose An Option Below To Begin</div>
     }
 

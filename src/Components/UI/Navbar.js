@@ -8,8 +8,8 @@ const TopNavbar = (props) => {
             <Navbar.Brand className='m-auto' >ReactPaperScissors</Navbar.Brand>
             <Nav className="mr-auto position-absolute">
                 <Nav.Link href="/" >Play</Nav.Link>
-                <Nav.Link >Github</Nav.Link>
-                <Nav.Link disabled>Auth</Nav.Link>
+                <Nav.Link href='https://github.com/Vehicom0607/ReactPaperScissors'>Github</Nav.Link>
+                <Nav.Link disabled>Login</Nav.Link>
             </Nav>
         </Navbar>
     )
