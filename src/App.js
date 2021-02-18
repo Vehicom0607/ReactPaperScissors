@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
-import MainNavbar from './Components/UI/Navbar'
+import MainNavbar from './Components/UI/Navbar/Navbar'
 import {Container} from "react-bootstrap";
 import Controller from "./Containers/Controller";
 

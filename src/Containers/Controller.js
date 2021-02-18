@@ -14,24 +14,35 @@ class Controller extends Component {
 
     playerChooseHandler = playerChoice => {
         let computerChoice = Math.floor(Math.random() * 3)
-        console.log(computerChoice)
         if (computerChoice === 0) {
             this.increaseScore('tie')
             computerChoice = playerChoice
         } else if (computerChoice === 1) {
             this.increaseScore('player')
             switch (playerChoice) {
-                case 'rock': computerChoice = 'scissors'; break
-                case 'paper':computerChoice = 'rock'; break
-                case 'scissors': computerChoice = 'paper'; break
-                default: console.log('something went wrong');
+                case 'rock':
+                    computerChoice = 'scissors'
+                    break
+                case 'paper':
+                    computerChoice = 'rock'
+                    break
+                case 'scissors':
+                    computerChoice = 'paper'
+                    break
+                default: console.log('something went wrong')
             }
         } else {
             this.increaseScore('computer')
             switch (playerChoice) {
-                case 'rock': computerChoice = 'paper'; break
-                case 'paper':computerChoice = 'scissors'; break
-                case 'scissors': computerChoice = 'rock'; break
+                case 'rock':
+                    computerChoice = 'paper'
+                    break
+                case 'paper':
+                    computerChoice = 'scissors'
+                    break
+                case 'scissors':
+                    computerChoice = 'rock'
+                    break
                 default:console.log('something went wrong');
             }
         }
@@ -40,13 +51,14 @@ class Controller extends Component {
     }
 
     increaseScore = winner => {
+        console.log(winner)
         if (winner === 'player') {
-            this.setState(prevState => {prevState.playerScore+=0.5})
+            this.setState(prevState => {return {...prevState, playerScore: prevState.playerScore + 1}})
             this.setState({result: 'player'})
         } else if (winner === 'tie') {
             this.setState({result: 'tie'})
         }else {
-            this.setState(prevState => {prevState.computerScore+=0.5})
+            this.setState(prevState => {return {...prevState, computerScore: prevState.computerScore + 1}})
             this.setState({result: 'computer'})
         }
     }

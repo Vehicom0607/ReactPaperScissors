@@ -24,7 +24,7 @@ const ResultDisplay = props => {
     return (
         <Row >
             <Col >
-                <Jumbotron style={{backgroundColor: '#f0fafc'}}>
+                <Jumbotron style={{backgroundColor: '#fdf9f8'}}>
                     {result}
                     <p className='h3 d-inline p-5'>Your Score: {props.playerScore}</p>
                     <p className='h3 d-inline p-5'>Computer Score: {props.computerScore}</p>
