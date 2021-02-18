@@ -1,9 +1,9 @@
 import React from "react";
-import {Nav, Navbar, NavDropdown} from "react-bootstrap";
+import {Nav, Navbar} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import classes from './Navbar.module.css'
 
-const TopNavbar = (props) => {
+const TopNavbar = () => {
     return (
         <Navbar expand="lg" className={classes.Navbar}>
             <Navbar.Brand href="#home">React Paper Scissors</Navbar.Brand>
