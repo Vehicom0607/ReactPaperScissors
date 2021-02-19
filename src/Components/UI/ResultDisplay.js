@@ -1,9 +1,12 @@
 import React from "react";
 import {Col, Jumbotron, Row} from "react-bootstrap";
+import {connect} from 'react-redux'
+
 
 const ResultDisplay = props => {
     let playerChoice;
     let computerChoice;
+    console.log(props.playerChoice)
     if (props.playerChoice !== null) {
         playerChoice = props.playerChoice.toUpperCase()
     }
@@ -35,4 +38,14 @@ const ResultDisplay = props => {
 
 }
 
-export default ResultDisplay
+const mapStateToProps = (state) => {
+    return {
+        playerScore: state.playerScore,
+        computerScore: state.computerScore,
+        result: state.result,
+        playerChoice: state.playerChoice,
+        computerChoice: state.computerChoice
+    }
+}
+
+export default connect(mapStateToProps)(ResultDisplay)

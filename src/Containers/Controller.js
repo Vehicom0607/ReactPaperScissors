@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
 import ResultDisplay from "../Components/UI/ResultDisplay";
 import PlayerControl from "../Components/Control/PlayerControl";
+import {connect} from 'react-redux'
+import * as actionTypes from '../store/actionTypes'
 
 class Controller extends Component {
-
-    state = {
-        playerScore: 0,
-        computerScore: 0,
-        result: null,
-        playerChoice: null,
-        computerChoice: null
-    }
 
     playerChooseHandler = playerChoice => {
         let computerChoice = Math.floor(Math.random() * 3)
@@ -47,26 +41,25 @@ class Controller extends Component {
             }
         }
 
-        this.setState({playerChoice: playerChoice, computerChoice: computerChoice})
+        this.props.setChoices(playerChoice, computerChoice)
     }
 
     increaseScore = winner => {
-        console.log(winner)
         if (winner === 'player') {
-            this.setState(prevState => {return {...prevState, playerScore: prevState.playerScore + 1}})
-            this.setState({result: 'player'})
+            this.props.incrementPlayer()
+            this.props.setResult('player')
         } else if (winner === 'tie') {
-            this.setState({result: 'tie'})
+            this.props.setResult('tie')
         }else {
-            this.setState(prevState => {return {...prevState, computerScore: prevState.computerScore + 1}})
-            this.setState({result: 'computer'})
+            this.props.incrementComputer()
+            this.props.setResult('computer')
         }
     }
 
     render() {
         return (
             <div className='py-5'>
-                <ResultDisplay playerScore={this.state.playerScore} computerScore={this.state.computerScore} playerChoice={this.state.playerChoice} computerChoice={this.state.computerChoice} result={this.state.result} />
+                <ResultDisplay  />
                 <PlayerControl playerChooseHandler={this.playerChooseHandler} />
             </div>
         );
@@ -74,4 +67,14 @@ class Controller extends Component {
 }
 
 
-export default Controller;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        incrementPlayer: () => dispatch({type: actionTypes.INCREMENT_PLAYER}),
+        incrementComputer: () => dispatch({type: actionTypes.INCREMENT_COMPUTER}),
+        setChoices: (playerChoice, computerChoice) => dispatch({type: actionTypes.SET_CHOICES, payload: {playerChoice: playerChoice, computerChoice: computerChoice}}),
+        setResult: (result) => dispatch({type: actionTypes.SET_RESULT, result: result})
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Controller);
