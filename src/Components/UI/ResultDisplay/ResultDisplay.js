@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {Col, Jumbotron, Row} from "react-bootstrap";
 import {connect} from 'react-redux'
-
+import classes from './ResultDisplay.module.css'
 
 const ResultDisplay = props => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1200);
+
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            const ismobile = window.innerWidth < 1200;
+            if (ismobile !== isMobile) setIsMobile(ismobile);
+        }, false);
+    }, [isMobile]);
+
     let playerChoice;
     let computerChoice;
     console.log(props.playerChoice)
@@ -27,10 +36,10 @@ const ResultDisplay = props => {
     return (
         <Row >
             <Col >
-                <Jumbotron style={{backgroundColor: '#fdf9f8'}}>
+                <Jumbotron className={classes.Jumbotron}>
                     {result}
-                    <p className='h3 d-inline p-5'>Your Score: {props.playerScore}</p>
-                    <p className='h3 d-inline p-5'>Computer Score: {props.computerScore}</p>
+                    <p className={`h3 px-5${isMobile ? "" : " d-inline"}`}>Your Score: {props.playerScore}</p>
+                    <p className={`h3 px-5${isMobile ? "" : " d-inline"}`}>Computer Score: {props.computerScore}</p>
                 </Jumbotron>
             </Col>
         </Row>

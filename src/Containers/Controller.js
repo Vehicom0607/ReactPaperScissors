@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ResultDisplay from "../Components/UI/ResultDisplay";
+import ResultDisplay from "../Components/UI/ResultDisplay/ResultDisplay";
 import PlayerControl from "../Components/Control/PlayerControl";
 import {connect} from 'react-redux'
 import * as actionTypes from '../store/actionTypes'
